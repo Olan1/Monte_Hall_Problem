@@ -45,10 +45,11 @@ for game in range(games):
     unopen_doors = [1, 2, 3]            # 3 unopened doors
     prize_door = rm.randint(1, 3)       # Pick a door to hide the prize
     user_choice = rm.randint(1, 3)      # Get users choice of door
-    host_door_pick = rm.randint(1,3)    # Host picks door to open
-    # If hosts selected the users choice door or the prize door, reselect
-    while host_door_pick == prize_door or host_door_pick == user_choice:
-        host_door_pick = rm.randint(1,3)
+    
+    # Create list of hosts door options and remove the users choice
+    host_choices = [1, 2, 3]
+    host_choices.remove(user_choice)
+    host_door_pick = rm.choice(host_choices)    # Host picks door to open
     
     unopen_doors.remove(host_door_pick) # Open hosts selected door
     
